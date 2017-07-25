@@ -1,3 +1,5 @@
+#This is a part of another project called node-oracle-angular-4
+
 # Angular4
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
