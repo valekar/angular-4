@@ -1,0 +1,62 @@
+ <br/>
+  <div class="row">
+     <div class="col-lg-12">
+         <h1 class="page-header">
+             SLA <small> Summary</small>                         
+         </h1>         
+     </div>
+ </div>
+ 
+ <div class="row">
+ 	<div class="col-lg-12">
+ 		<div class="panel panel-primary text-center">
+             <div class="panel-heading">
+                 <h3 class="panel-title"><i class="fa fa-fw fa-table"></i>Latest Summary</h3>
+             </div>
+             <div class="panel-body">
+                 <div id="morris-area-chart">  
+                 	                           	
+                 	<div *ngIf='isResultPresent;then loadTable else loadLoader'>						
+					</div>
+					
+					<ng-template #loadTable>
+						<table class="table table-bordered">
+							<tr >
+								<th class="text-center">{{html_constants.SLA_CONFIG_KEY}}</th>
+								<th class="text-center">{{html_constants.LOS}}</th>
+								<th class="text-center">{{html_constants.SLA_NAME}}</th>
+								<th class="text-center">{{html_constants.SLA_CATEGORY}}</th>
+								<!-- <th class="text-center">{{html_constants.FREQUENCY}}</th> -->
+								<th class="text-center">{{html_constants.RUN_DATE}}</th>
+								<th class="text-center">{{html_constants.SLA_DELIVERY_TS}}</th>
+								<th class="text-center">{{html_constants.SLA_DELIVERY_STAT}}</th>
+								<th class="text-center">{{html_constants.SLA_GOAL_TIME}}</th>
+								<th class="text-center">{{html_constants.SLA_NLT_TIME}}</th>
+								<th class="text-center">{{html_constants.SLA_DELAY_TIME}}</th>
+							</tr>
+							
+							<tr *ngFor = 'let sla of slasLatestResults.rows' >
+								<td>{{sla[0]}}</td>
+								<td>{{sla[1]}}</td>
+								<td >{{sla[2] }} </td>
+								<td >{{sla[3]  }}</td>
+								<!-- <td >{{sla[4]}}</td> -->
+								<td>{{sla[5] | parseDate}}</td>
+								<td >{{sla[6]| parseDate}}</td>
+								<td [className]="setClass(sla[7])">{{sla[7]}}</td>
+								<td >{{sla[8]}}</td>
+								<td >{{sla[9]}}</td>
+								<td >{{sla[10]}}</td>
+							
+							<tr>
+						</table>						
+					</ng-template>
+					<ng-template #loadLoader>
+						<loading class="slas-loader"></loading>
+					</ng-template>
+					
+                 </div>
+             </div>
+         </div>
+ 	</div>
+</div>

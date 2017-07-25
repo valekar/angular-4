@@ -1,0 +1,53 @@
+ <br/>
+  <div class="row">
+     <div class="col-lg-12">
+         <h1 class="page-header">
+             SLA <small>Details</small>                         
+         </h1>         
+     </div>
+ </div>
+ 
+ <div class="row">
+ 	<div class="col-lg-12">
+ 		<div class="panel panel-primary text-center">
+             <div class="panel-heading">
+                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Logs</h3>
+             </div>
+             <div class="panel-body">
+                 <div id="morris-area-chart">  
+                 	                           	
+                 	<div *ngIf='isSlasPresent;then loadTable else loadLoader'>						
+					</div>
+					
+					<ng-template #loadTable>
+						<table class="table table-bordered">
+							<tr >
+								<th class="text-center">SLA_LOG_KEY</th>
+								<th class="text-center">SLA_CONFIG_KEY</th>
+								<th class="text-center">RUN_DATE</th>
+								<th class="text-center"> SLA_DELIVERY_TS</th>
+								<th class="text-center">SLA_DELIVERY_STAT</th>
+								<th class="text-center">INTERVENTION_IND</th>
+							</tr>
+							
+							<tr *ngFor = 'let sla of slasResults.rows' >
+								<td>{{sla[0]}}</td>
+								<td>{{sla[1]}}</td>
+								<td align="center">{{sla[2] | parseDate }} </td>
+								<td align="center">{{sla[3] | parseDate }}</td>
+								<td [className] = "statusClassName(sla[4])">{{sla[4]}}</td>
+								<td>{{sla[5]}}</td>
+							
+							<tr>
+						</table>						
+					</ng-template>
+					<ng-template #loadLoader>
+						<loading class="slas-loader"></loading>
+					</ng-template>
+					
+                 </div>
+             </div>
+         </div>
+ 	</div>
+</div>
+

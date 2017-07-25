@@ -1,0 +1,23 @@
+#graph {
+	height:300px;
+}
+#bargraph {
+	height:300px;
+}
+
+
+
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+.dashboard-loading{
+	margin-left:25%;
+	margin-top:50px ;
+}
